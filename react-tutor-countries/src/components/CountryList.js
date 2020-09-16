@@ -14,6 +14,15 @@ export default class CountryList extends Component {
         })
     }
 
+     searchHandler = (e) => {
+        axios.get('https://restcountries.eu/rest/v2/name/'+e.target.value)
+        .then(res=>{
+            this.setState({
+                countries : res.data
+            })
+        })
+    }
+
     render() {
 const countryList = this.state.countries .map((ct) => {
     return(
@@ -22,9 +31,14 @@ const countryList = this.state.countries .map((ct) => {
     )
 })
     return(
-    <div className="card-columns">
-        {countryList}
-    </div>
+        <div className="container">
+            
+        <input type="text" className="form-control mt-3 mb-3" onChange={this.searchHandler} placeholder="Ülke Adı Giriniz"></input>
+       
+       <div className="card-columns">
+           {countryList}
+       </div>
+        </div>
     )
 
     }
