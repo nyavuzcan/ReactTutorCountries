@@ -1,21 +1,23 @@
 import React, { Component } from 'react'
 import Data from '../Data'
 import {Link} from 'react-router-dom'
-
+import CountryCard from './CountryCard'
+import axios from 'axios'
 export default class CountryList extends Component {
-    render() {
-const countryList = Data.map((ct,i) => {
-    return(
-        <div className="card mb-1" key={ct.numericCode}>
-            <div className="card-body">
-                <Link to={'/'+ ct.name}>
-            <h5 className="card-title" >{i+'-'+ct.name}</h5>
-            </Link>
-            <p>{ct.nativeName}</p>
-            </div>
+    state={
+        countries: []
+    }
+    componentDidMount(){
+        axios.get('https://restcountries.eu/rest/v2/all')
+        .then(rsp => {
+            this.setState({countries:rsp.data})
+        })
+    }
 
-        </div>
-        
+    render() {
+const countryList = this.state.countries .map((ct) => {
+    return(
+       <CountryCard country={ct} key={ct.numericCode}/>
       
     )
 })
