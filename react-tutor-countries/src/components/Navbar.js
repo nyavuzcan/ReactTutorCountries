@@ -1,7 +1,18 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 const Navbar = () => {
+    //Higher Order Functions
+
+    // function toConsole(str1) {
+    //     return function (str2){
+    //         console.log(str1+' '+str2)
+    //     }
+    // }
+    // const selamla = toConsole('Merhaba');
+    // selamla('Ali')
+    
+    
 return(
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   <a className="navbar-brand" href="#">Ülkeler</a>
@@ -27,4 +38,4 @@ return(
 
 }
 
-export default Navbar;
+export default withRouter(Navbar);

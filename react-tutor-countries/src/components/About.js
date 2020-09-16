@@ -1,7 +1,14 @@
 import React from 'react'
+import LogButton from '../LogButton'
+ 
 
-const About = () => {
+const About = (props) => {
+    // setInterval(()=>{
+    //     props.history.push('/contact')
+    // },2000);
+    
     return (
+
         <div>
             <h1>Hakkında</h1>
                 <p>Lorasdasdsadem lasdasdasdasd a123123sdasdasdasddsa</p>
@@ -9,4 +16,4 @@ const About = () => {
     )
 }
 
-export default About;
+export default LogButton(About);
